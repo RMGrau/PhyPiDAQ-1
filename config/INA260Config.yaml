@@ -1,0 +1,6 @@
+# example config for INA260 current sensor
+DAQModule: INA260Config
+
+NChannels: 1  # 2: current and voltage; 3: current, voltage and power
+maxAmp: 0.5  # max. 3.1999 A
+maxVolt: 16. # max. 32.0 V
