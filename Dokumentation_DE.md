@@ -256,14 +256,14 @@ Falls sich bereits ein Betriebssystem auf dem Raspberry Pi befindet, können  Si
 
 ### 3.1 Wie setze ich den Raspberry Pi auf ?
 
-Laden Sie auf einem beliebigen Rechner mit SD Karten-Slot zunächst *Raspberry Pi  Imager* von der offiziellen Seite https://www.raspberrypi.org/downloads/ herunter.  
+Laden Sie auf einem beliebigen Rechner mit SD Karten-Slot zunächst *Raspberry Pi  Imager* von der offiziellen Seite https://www.raspberrypi.org/downloads/ herunter. Der Rasberry Pi benötigt hierbei eine MicroSD Karte. Falls man den Einplatinencomputer regelmäßig nutzen möchte empfiehlt sich eine Speicherkapazität von 32 GB, jedoch nicht größer.  
 
-Installieren Sie den *Raspberry Pi Imager*, indem Sie die heruntergeladene Datei  doppelklicken.  
+Installieren Sie den *Raspberry Pi Imager*, indem Sie die heruntergeladene Datei  doppelklicken. Der *Raspberry Pi Imager* ist das kostenfreie und offizielle Programm zur Installierung eines Betriebssystems. Das Programm liest hierbei die SD-Karte ein, formatiert diese und bietet eine Auswahl an Betriebsystemen an.
 
 *Abb. 20*:  Installation von Raspberry Pi Imager, Doppelklick auf die "Himbeere"  
                     ![Figure 20](Hardware/Fotos/installieren_1.png)  
 
-Es öffnet sich ein neues Fenster, in welchen Sie das zu installierende Betriebssystem  auswählen können, sowie die SD-Karte. Wählen Sie bei *Operating System*  *"Raspberry Pi OS (other)"* und dann *"Raspberry Pi OS Full"* aus.  
+Es öffnet sich ein neues Fenster, in welchen Sie das zu installierende Betriebssystem  auswählen können, sowie die SD-Karte. Wählen Sie bei *Operating System*  *"Raspberry Pi OS (other)"* und dann *"Raspberry Pi OS Full"* aus.  Hierbei handelt es sichum die offizielle Linux-Distribution, welche neben einer grafischen Benutzeroberfläche auch einen Internet Browser und nützliche Programme und Treiber mit installiert.
 
 *Abb. 21*:  Auswahl des Betriebssystems  
                     ![Figure 21](Hardware/Fotos/installieren_2.png)  
@@ -277,7 +277,7 @@ Stecken Sie nun die SD-Karte in den Slot des Rechners. Vergessern Sie sich  hier
                     ![Figure 23](Hardware/Fotos/installieren_4.png)  
 
 Im *Raspberry Pi Imager* können Sie nun bei *"SD Card"* per Klick Ihre SD-Karte  
-auswählen.  
+auswählen. Falls der Rechner nur normale SD Karten lesen kann, empfiehlt sich ein SD-Karten Adapter wie auf obigem Bild dargestellt. 
 
 *Abb. 24*:  Auswahl der SD-Karte  
                     ![Figure 24](Hardware/Fotos/installieren_5.png)  
@@ -287,7 +287,7 @@ Mit einem Klick auf *"Write"* und anschließendem bestätigen können Sie schlie
 *Abb. 25*:  Beschreiben der SD-Karte  
                     ![Figure 25](Hardware/Fotos/installieren_6.png)  
                     
-Wenn der Vorgang abgeschlossen ist befindet sich das Betriebssystem für den  Raspberry Pi auf der SD-Karte und diese kann in den Raspberry Pi eingesteckt  werden. Falls Sie sich nicht für die Koffervariante mit Display entschieden haben, verbinden Sie nun einen externen Monitor, und stellen Sie sicher, dass eine Maus und Tastatur angeschlossen ist. Verbinden Sie weiter ein Ethernet-Kabel, falls Sie keine Wlan-Verbindung verfügbar haben. Anschließend können Sie den Raspberry Pi mit dem Netzteil verbinden, er startet automatisch.  
+Wenn der Vorgang abgeschlossen ist befindet sich das Betriebssystem für den  Raspberry Pi auf der SD-Karte und diese kann in den Raspberry Pi eingesteckt  werden. Falls Sie sich nicht für die Koffervariante mit Display entschieden haben, verbinden Sie nun einen externen Monitor, und stellen Sie sicher, dass eine Maus und Tastatur angeschlossen ist. Verbinden Sie weiter ein Ethernet-Kabel, falls Sie keine Wlan-Verbindung verfügbar haben. Anschließend können Sie den Raspberry Pi mit dem Netzteil verbinden, er startet automatisch durch das Anschließen einer Stromversorgung- einen klassischen An-/Ausschaltknopf gibt es nicht.  
 Es werden nun verschiedene Pakete automatisch installiert, was ebenfalls  mehrere Minuten dauern kann. Ist das erfolgreich geschenen, so öffnet sich ein  Fenster, in welchem Sie grundlegende Systemeinstellungen wie Zeitzone, Land,  Tastaturlayout und Ihr Wlan-Netz einstellen, sofern das gewünscht ist. Das Aufsetzen des Pi ist damit abgeschlossen und wir können mit dem Installieren von *PhyPiDAQ* fortfahren.
 
 <a name="wieinstalliereichphypidaq"></a>
@@ -296,21 +296,22 @@ Es werden nun verschiedene Pakete automatisch installiert, was ebenfalls  mehrer
 
 **Beziehen des PhyPiDAQ Codes und einfache Installation**
 
-Bitte beachten Sie , dass Ihr Raspberry Pi für die folgenden Schritte mit dem Internet verbunden sein muss. Öffnen Sie das Terminal, welches Sie in der Systemleiste oben links finden.
+Bitte beachten Sie , dass Ihr Raspberry Pi für die folgenden Schritte mit dem Internet verbunden sein muss. Öffnen Sie das Terminal, welches Sie in der Systemleiste oben links finden. Es empfiehlt sich das Verbinden mit einem Lan-Kabel.
 
 *Abb. 26*:  Terminal öffnen  
                     ![Figure 26](Hardware/Fotos/installieren_7.png)  
                     
 
-Installieren Sie zunächst *git*, mit welchem sich alle Dateien des Pakets  PhyPiDAQ* herunterladen lassen. Geben Sie hierzu folgendes in das Terminalfenster ein:
+Installieren Sie zunächst *git*, mit welchem sich alle Dateien des Pakets  *PhyPiDAQ* herunterladen lassen. Geben Sie hierzu folgendes in das Terminalfenster ein:
 ```bash
 sudo apt-get install git
 ```
+Falls die Schriftgröße im Terminalfenster zu klein erscheint, so kann man diese im Drop-down Menü unter *Bearbeiten* > *Vergrößern* oder über die Tastenkombination *Umschalt+Atrg++* vergrößern.
 
 *Abb. 27*:  Befehl im Terminal eingeben  
                     ![Figure 27](Hardware/Fotos/terminal.png)  
                     
-Zur Installation von *PhyPiDAQ* geben Sie folgende Befehle ein. Kopieren Sie grundsätzlich Zeile für Zeile dieses Cods in das Terminal und bestätigen Sie jeden Befehl mit der Enter-Taste. Fügen Sie **NICHT** alle Zeilen auf einmal ein.
+Zur Installation von *PhyPiDAQ* geben Sie folgende Befehle ein. Kopieren Sie grundsätzlich Zeile für Zeile dieses Cods in das Terminal und bestätigen Sie jeden Befehl mit der Enter-Taste. Fügen Sie **NICHT** alle Zeilen auf einmal ein. Nach der vorletzten Zeile muss man den Befehl mit der Taste *j* bestätigen und einen Moment warten. Nochmals muss man mit *j* bestätigen und kurz warten.
 
 ```bash
 mkdir ~/git
@@ -320,7 +321,7 @@ cd ~/git/PhyPiDAQ
 ./installlibs.sh
 cp ~/git/PhyPiDAQ/phypi.desktop ~/Desktop/
 ```
-Damit ist die Installation schon abgeschlossen und *PhyPiDAQ* ist bereit für den ersten Einsatz. 
+Damit ist die Installation schon abgeschlossen und *PhyPiDAQ* ist bereit für den ersten Einsatz. Auch wurde ein Programm-Icon auf den Desktop erstellt.
 Falls Sie später die installierte Version aktualisieren wollen geben Sie folgendes in das Terminal ein (nicht notwendig bei Erstinstallation, da bereits die aktuelle Version heruntergeladen ist):
 
 ```bash
@@ -342,7 +343,7 @@ Zum Starten der Anwendung *PhyPiDAQ*, doppelklicken Sie auf dem Desktop auf das 
                     ![Figure 28](Hardware/Fotos/bedienung_1.png)  
                     
 Sie werden gefragt, wie Sie es öffnen möchten, wählen Sie hier "*Ausführen*" aus.  
-Es öffnen sich nun zwei Fenster: ein schwarzes Terminal Fenster, welches aktuelle Statusmeldungen und Log-Dateien anzeigt. Für die einfache Bedienung können Sie dieses Fenster ignorieren. Wichtig wird es erst, wenn Fehler angezeigt werden.  In diesem Fall zeigt das Terminal-Fenster den Fehlercode und Hinweise, welche auf das Problem hinzeigen und das Problem dadurch in der Regel schnell behoben  werden kann.  
+Es öffnen sich nun zwei Fenster: ein schwarzes Terminal Fenster, welches aktuelle Statusmeldungen und Log-Dateien anzeigt. Für die einfache Bedienung können Sie dieses Fenster ignorieren. Wichtig wird es erst, wenn Fehler angezeigt werden.  In diesem Fall zeigt das Terminal-Fenster den Fehlercode und Hinweise, welche auf das Problem hinzeigen und das Problem dadurch in der Regel schnell behoben  werden kann. Das Terminalfenster darf nicht geschlossen werden, sonder kann in der oberen Leiste über den Pfeil nach unten minimiert werden.
 Das wichtigere Fenster ist die Bedienoberfläche von *PhyPiDAQ*.  
 
 *Abb. 29*:  Bedienoberfläche *PhyPiDAQ*  
@@ -351,6 +352,7 @@ Das wichtigere Fenster ist die Bedienoberfläche von *PhyPiDAQ*.
 Im Reiter "*Control"*, in welchem Sie sich nach dem Öffnen befinden, ist der Startreiter. Von hier aus kann eine Messung gestartet werden, indem der Button rechts unten "*StartRun*" geklickt wird, was aber erst später probiert werden soll. Weiter lässt sich in diesem Reiter das sogenannte Arbeitsverzeichnis auswählen. Hier können Sie bestimmen, wo der konfigurierte Versuch abgespeichert werden soll. Eine übersichtliche Ordnerstruktur ist essentiell,  wenn *PhyPiDAQ* in mehrerern Schulklassen verwendet wird. Es wird daher sehr empfohlen, eine Struktur wie die Folgende zu verwenden:  
 
 *Abb. 30*:  Ordnerstruktur  
+!!!HIER FEHLT DIE BETREFFENDE ABBILDUNG!!!
                     ![Figure 30](Hardware/Fotos/ordnerstruktur.png)  
                     
 Sie können neue Ordner im Dateimanager erstellen (ähnlich wie Windows  "Arbeitsplatz" oder Mac "Finder"), indem Sie mit der rechten Maustaste im  Fenster auf *"Neu"*->*"Ordner"* klicken.  
@@ -358,7 +360,7 @@ Sie können neue Ordner im Dateimanager erstellen (ähnlich wie Windows  "Arbeit
 *Abb. 31*:  neuen Ordner erstellen  
                     ![Figure 31](Hardware/Fotos/bedienung_3.png)  
                     
-Eine andere Möglichkeit ist die Eingabe des folgenden Befehls im Terminal,  welcher den Unterordner *"Klasse_12"* im Ordner *"Schule"* erstellt.  
+Eine andere Möglichkeit ist die Eingabe des folgenden Befehls im Terminal (vgl. *Abb. 26*),  welcher den Unterordner *"Klasse_12"* im Ordner *"Schule"* erstellt.  
 
 ```bash
 mkdir /home/pi/PhyPi/Schule/Klasse_12
