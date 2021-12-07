@@ -567,7 +567,7 @@ Ist der Aufbau abgeschlossen, so kann die Messung gestartet und mit verschiedene
 Des Weiteren wird die Spannung aufgenommen, wenn kein Massestück angehängt ist.  Anschließend werden die Messwerte exportiert und die Spannungen den jeweiligen angehängten Massen zugeordnet. Durch zeitliches Mitteln der Spannungswerte während der Zeit, als das jeweilige Massestück angehängt war, kann jeder Masse ein Spannungswert zugeordnet werden. Es ergeben sich somit zehn Spannungswerte zu den  zehn Massestücken. Es ist zu erkennen, dass die Spannung proportional  zur angehängten Masse ist. Die Spannung, welche gemessen wird, ohne dass ein Massestück angehängt ist, wird als Offset-Spannung von den anderen Spannungen abgezogen. Nach Bestimmung der Ausgleichsfunktion kann diese Wägezelle somit als Waage für Massen bis 500 g eingesetzt werden.  
 
 *Abb. 37*:  Die Spannung der Wägezelle steigt mit zunehmender Kraft an.  
-Die Offset-Spannung, welche ohne ein angehängtes Massestück anliegt, wird von den restlichen Spannungswerten abgezogen. Die gemessenen Werte sind mit einer Ursprungsgeraden kompatibel.  
+Die Offset-Spannung, welche ohne ein angehängtes Massestück anliegt, wird von den restlichen Spannungswerten abgezogen. Die gemessenen Werte sind mit einer Ursprungsgeraden kompatibel. Die Steckplatine hat eine vielzahl an Kontaktfedern: Die mit einem blauen Minus und einem roten Plus gej´kennzeichneten Reihen sind horizontal miteinander verbunden, die anderen Kontaktfedern sind jeweils in der Zahlenreihe miteinander intern verbunden.  
                     ![Figure 37](Hardware/Fotos/kraft_ratio.png)  
              
 Die Regression kann entweder direkt in *PhyPiDAQ* mit der Funktion *ChanCalib*  vorgenommen werden, oder die Werte werden exportiert und anschließend in Excel,  Python, ect. weiter verarbeitet.  
@@ -581,12 +581,14 @@ ChanUnits: ['V']         # units for channels
 ChanColors: [darkblue]      # channel colours in display
 
 Interval: 0.05                 # logging interval         
-NHistoryPoints: 20000          # number of points used in history buffer, time=NHistoryPoints*Interval = 2000*0.05 = 100 seonds
+NHistoryPoints: 2000          # number of points used in history buffer, time=NHistoryPoints*Interval = 2000*0.05 = 100 seonds
 DisplayModule: DataGraphs     # text, bar-graph, history and xy-view
 Title: "Data from File"       # display title
 DataFile:   null              #  null to disable 
 CSVseparator: '   '            # field separator, set to ';' for German Excel   
 ```
+
+!!!	ACHTUNG IM FERTIGEN PDF RUTSCHT OBIGES "time=NHistoryPoints*Interval = 2000*0.05 = 100 seonds" IN NEUE ZEILE UND WIRD DADURCH BEIUM RÜBERKOPIEREN IN PHYPIDAQ ALS CUDE INTERPRETIERT!!!
 
 **kraft_ADS1115Config.yaml:**
 
@@ -626,7 +628,7 @@ ChanUnits: ['V']         # units for channels
 ChanColors: [darkblue]      # channel colours in display
 
 Interval: 0.05                 # logging interval         
-NHistoryPoints: 20000          # number of points used in history buffer, time=NHistoryPoints*Interval = 2000*0.05 = 100 seonds
+NHistoryPoints: 2000          # number of points used in history buffer, #time=NHistoryPoints*Interval = 2000*0.05 = 100 seonds
 DisplayModule: DataGraphs     # text, bar-graph, history and xy-view
 Title: "Data from File"       # display title
 DataFile:   null              #  null to disable 
@@ -638,7 +640,7 @@ CSVseparator: '   '            # field separator, set to ';' for German Excel
 DAQModule: ADS1115Config  
 ADCChannels: [0]
 DifModeChan: [false]
-Gain: [1]
+Gain: [1]                     #possible gain: 2/3, 1, 2 , 4, 8, 16 Quelle: phypidaq/ADS1115Config.py
 sampleRate: 860
 ```
 Die Messung kann nun gestartet werden und die Gegenspannung wird dargestellt, welche sich  aus der Aufladung des Kondensators durch den Photoeffekt ergibt. Zum Entladen wird der Kondensator wieder mit Masse verbunden.  
