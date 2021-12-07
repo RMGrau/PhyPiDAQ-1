@@ -581,7 +581,7 @@ ChanUnits: ['V']         # units for channels
 ChanColors: [darkblue]      # channel colours in display
 
 Interval: 0.05                 # logging interval         
-NHistoryPoints: 2000          # number of points used in history buffer, time=NHistoryPoints*Interval = 2000*0.05 = 100 seonds
+NHistoryPoints: 2000          # number of points used in history buffer, #time=NHistoryPoints*Interval = 2000*0.05 = 100 seonds
 DisplayModule: DataGraphs     # text, bar-graph, history and xy-view
 Title: "Data from File"       # display title
 DataFile:   null              #  null to disable 
@@ -596,7 +596,7 @@ CSVseparator: '   '            # field separator, set to ';' for German Excel
 DAQModule: ADS1115Config  
 ADCChannels: [0]
 DifModeChan: [true]
-Gain: [1]
+Gain: [1]                                 #possible gain: 2/3, 1, 2 , 4, 8, 16 Quelle: phypidaq/ADS1115Config.py
 sampleRate: 860
 ```
 
